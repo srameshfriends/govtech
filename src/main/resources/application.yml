@@ -1,0 +1,25 @@
+server:
+  port : 8088
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  resources:
+    static-locations:
+      classpath: public
+  datasource:
+    url: jdbc:h2:file:/data/gov-tech
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  application:
+    name: GOV_TECH
+  h2:
+    console:
+      enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+

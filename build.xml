@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<project name="GovTech Application build" default="copy">
+
+    <property name="root" value="."/>
+
+    <property name="webapp.resource" value="${root}\webapp\build"/>
+    <property name="webapp.target" value="${root}\src\main\resources\public"/>
+
+    <target name="clean">
+        <delete dir="${webapp.target}" />
+    </target>
+
+    <target name="copy" depends="clean">
+        <copy todir="${webapp.target}" >
+            <fileset dir="${webapp.resource}" includes="**"/>
+        </copy>
+    </target>
+</project>
