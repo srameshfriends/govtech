@@ -2,6 +2,7 @@ package com.govtech.project;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.ApplicationPidFileWriter;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
@@ -9,7 +10,8 @@ import org.springframework.context.annotation.ComponentScan;
 public class RestaurantBookingApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RestaurantBookingApplication.class, args);
+		SpringApplication application = new SpringApplication(RestaurantBookingApplication.class);
+		application.addListeners(new ApplicationPidFileWriter("govtech.pid"));
+		application.run(args);
 	}
-
 }
