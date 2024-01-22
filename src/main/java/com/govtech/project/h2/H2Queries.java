@@ -5,12 +5,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.util.StringUtils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 @Configuration
@@ -24,9 +26,10 @@ public class H2Queries {
     }
 
     private static Properties readProperties(ResourceLoader loader) {
-        Resource resource = loader.getResource("classpath:/query/h2-query.properties");
+        /*Resource resource = loader.getResource("classpath:/query/h2-query.properties");*/
         Properties properties = new Properties();
-        try (FileInputStream fileInputStream = new FileInputStream(resource.getFile())) {
+        ClassPathResource classPathResource = new ClassPathResource("query/h2-query.properties");
+        try (InputStream fileInputStream = classPathResource.getInputStream()) {
             properties.load(fileInputStream);
         } catch (IOException e) {
             throw new RuntimeException(e);

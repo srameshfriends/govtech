@@ -46,7 +46,6 @@ public class GatheringEvent extends BaseEntity {
 
     @JsonProperty("participants")
     @OneToMany(mappedBy = "gatheringEvent",
-            orphanRemoval = true,
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     private Set<EventParticipant> participants;
