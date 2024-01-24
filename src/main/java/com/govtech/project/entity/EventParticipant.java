@@ -32,6 +32,9 @@ public class EventParticipant extends BaseEntity {
     @JoinColumn(name = "user_info")
     private UserInfo userInfo;
 
+    @Column(name = "remarks")
+    private String remarks;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
